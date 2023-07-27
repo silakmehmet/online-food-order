@@ -17,13 +17,14 @@ const AvailableMeals = () => {
         throw new Error();
       }
       const responseData = await response.json();
+      const data = responseData.pizza;
       const loadedMeals = [];
-      for (const key in responseData) {
+      for (const key in data) {
         loadedMeals.push({
           id: key,
-          name: responseData[key].name,
-          description: responseData[key].description,
-          price: responseData[key].price,
+          name: data[key].name,
+          description: data[key].description,
+          price: data[key].price,
         });
       }
       setMeals(loadedMeals);
