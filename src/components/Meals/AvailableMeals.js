@@ -3,41 +3,40 @@ import classes from './AvailableMeals.module.css';
 import Card from '../UI/Card';
 import MealItem from './MealItem';
 
-const AvailableMeals = () => {
+const AvailableMeals = ({ url }) => {
   const [meals, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState(null);
 
+  const fetchMeals = async (url) => {
+    const response = await fetch(
+      `https://meals-25e4c-default-rtdb.firebaseio.com/meals/${url}.json`
+    );
+    if (!response.ok) {
+      throw new Error();
+    }
+    const responseData = await response.json();
+    const data = responseData;
+    const loadedMeals = [];
+    for (const key in data) {
+      loadedMeals.push({
+        id: key,
+        name: data[key].name,
+        description: data[key].description,
+        price: data[key].price,
+      });
+    }
+    setMeals(loadedMeals);
+    setIsLoading(false);
+  };
   useEffect(() => {
-    const fetchMeals = async () => {
-      const response = await fetch(
-        'https://meals-25e4c-default-rtdb.firebaseio.com/meals.json'
-      );
-      if (!response.ok) {
-        throw new Error();
-      }
-      const responseData = await response.json();
-      const data = responseData.pizza;
-      const loadedMeals = [];
-      for (const key in data) {
-        loadedMeals.push({
-          id: key,
-          name: data[key].name,
-          description: data[key].description,
-          price: data[key].price,
-        });
-      }
-      setMeals(loadedMeals);
-      setIsLoading(false);
-    };
-
-    fetchMeals()
+    fetchMeals(url)
       .then()
       .catch((error) => {
         setIsLoading(false);
         setHttpError(error.message);
       });
-  }, []);
+  }, [url]);
 
   if (isLoading) {
     return (
