@@ -6,7 +6,7 @@ import MealItem from './MealItem';
 const AvailableMeals = ({ url }) => {
   const [meals, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [httpError, setHttpError] = useState(null);
+  const [httpError, setHttpError] = useState();
 
   const fetchMeals = async (url) => {
     const response = await fetch(

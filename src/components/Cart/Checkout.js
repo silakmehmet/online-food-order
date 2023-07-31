@@ -39,6 +39,7 @@ const Checkout = (props) => {
     if (!formIsValid) {
       return;
     }
+
     props.onConfirm({
       name: enteredName,
       address: enteredAddress,
