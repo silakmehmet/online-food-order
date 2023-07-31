@@ -2,7 +2,7 @@ import Modal from '../UI/Modal';
 import CartItem from './CartItem';
 import classes from './Cart.module.css';
 import CartContext from '../../store/cart-context';
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import Checkout from './Checkout';
 
 const Cart = (props) => {
@@ -19,7 +19,7 @@ const Cart = (props) => {
   };
 
   const cartItemAddHandler = (item) => {
-    cartCtx.addItem(item);
+    cartCtx.addItem({ ...item, amount: 1 });
   };
 
   const orderHandler = () => {
