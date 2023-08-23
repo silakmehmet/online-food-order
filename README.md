@@ -4,8 +4,8 @@ Cuckoo's Restaurant is a single-page application that offers an intuitive and re
 
 ## Features
 
-**User-Friendly Shopping Cart:** Users can easily add and remove items from their shopping cart, providing a smooth shopping experience. \
+**User-Friendly Shopping Cart:** Users can easily add and remove items from their shopping cart, providing a smooth shopping experience.
 
-**Real-time Data Fetching:** The application fetches data from Firebase in real-time, ensuring that users always see the most up-to-date menu and product information. \
+**Real-time Data Fetching:** The application fetches data from Firebase in real-time, ensuring that users always see the most up-to-date menu and product information.
 
 **Responsive Design:** Cuckoo's Restaurant is designed to be responsive, adapting to different screen sizes and devices, including mobile phones, tablets, and desktops.
